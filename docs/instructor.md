@@ -111,15 +111,23 @@ All other preparation, rehearsals to prepare for confident delivery
 
 # Lesson guides 
 
+## Overall
+
+The goal of this workshop is to teach Nextflow best practices, and highlight the most important features to know and learn about amongst Nextflows large, and often daunting, repertoire. 
+
+Whilst there is a lot of technical information that needs to be covered in detail, remember to tie it back to the biology - your audience are bioscientists that need to use Nextflow to process data and run analyses for their research or applied goals. 
+
+For example, why would a biologist care about learning Nextflow over a set of functional bash scripts? Throughout the lessons, provide examples of where a particular feature would be useful in the context of a researcher running. These will be suggested in the lesson-specific subsections.
+
 ## Part 1
 
 ### 1.3 Writing your first pipeline
 
-This is first hands-on Nextflow exercise. In this lesson, you will guide learners through their initial Nextflow exercise by introducing them to the **fundamental building blocks of a minimal Nextflow script**. You'll cover the `process` and `workflow` scopes inside the `main.nf` file, focusing on key `process` compoenents like `input`, `ouput`, and `script`. Your main aim is to ensure learners understand the minimum components needed for a simple, working, one-step pipeline.
+This is the first hands-on Nextflow exercise. In this lesson, you will guide learners through their initial Nextflow exercise by introducing them to the **fundamental building blocks of a minimal Nextflow script**. You'll cover the `process` and `workflow` scopes inside the `main.nf` file, focusing on key `process` compoenents like `input`, `ouput`, and `script`. Your main aim is to ensure learners understand the minimum components needed for a simple, working, one-step pipeline.
 
 - Highlight that this lesson is to introduce only the minimum requirements for a Nextflow script.
-- Reinforce that there are many ways to achieve the same thing but it is important to be consistent.
-- Ensure they grasp the core concept of having `process` that does something simple, that is called in the `workflow`.
+- Reinforce that there are many ways to achieve the same thing but it is important to be consistent (e.g. see individual concepts below).
+- Ensure they grasp the core concept of having a `process` that does something simple, that is called in the `workflow`.
 - You can use an analogy of `process` being similar to a function in R or Python, but you need to call the function to run it.
 
 === "Concept"
@@ -149,10 +157,26 @@ This is first hands-on Nextflow exercise. In this lesson, you will guide learner
 
 ### 1.4 Running pipelines
 
-In this lesson, you will guide learners through executing the basic pipeline developed in the previous section using `nextflow run`. The focus here is to highlight the key outputs, and help learners understand these in detail. This includes the Nextflow log that is printed to the terminal, the importance of unique run names and hashes, and the files output by the pipeline such as the `work` directory. Once the `work` directory is explained, you will lead into how this is used as a cache for resuming workflows with the `-resume` flag. Finally, you will explain the `publishDir` directory to show how outputs can be organised more conveniently.
+In this lesson, you will guide learners through executing the basic pipeline developed in the previous section using `nextflow run`. The focus here is to highlight the **key outputs, and help learners understand these in detail. This includes the Nextflow log that is printed to the terminal, the importance of unique run names and hashes, and the files output by the pipeline such as the `work` directory. Once the `work` directory is explained, you will lead into how this is used as a cache for resuming workflows with the `-resume` flag. Finally, you will explain the `publishDir` directory to show how outputs can be organised more conveniently.
 
 - After running a pipeline, teach learners how to read the terminal output and understand the key lines of the Nextflow log. Explain line-by-line and in detail.
 - Emphasise the importance of the `work` directory for storing logs and how it plays a role in caching and resuming workflows
 - Be direct with learners: Nextflow runs produces many files. Using `publishDir` is a best practice to keep the outputs you want organised, in a predictable place, especially as workflows scale up.
+- This is a key feature that Nextflow has over, for example, bash scripts. You will need to manually write a checkpointing feature in bash, whereas it come "out of the box" in Nextflow.
+
+### 1.5 Inputs and channels
+
+This lesson introduces channels with exercises to create a channel, passing a string into a process, and updating the process to expect a string input.
+
+Emphasise that **channels are one of the trickiest concepts to learn in Nextflow**, but **getting it right is crucial as it is what makes Nextflow efficient and reproducible**. It can be tempting for new learners to manually process inputs and outputs within R or Python scripts (with exceptions: creating folders, moving files, error/file checking), but this **must** be done the Nextflow way, using channels.
+
+Reassure learners that this lesson will focus on a conceptual introduction to channels, and Part 2 will provide learners with opportunities to implement channels for different bioinfomatics use cases. There are different ways that channels should be used, and manipulated with groovy, but this is beyond the scope of this introductory workshop. Suggest useful resources such as [Nextflow patterns](https://nextflow-io.github.io/patterns/) which have examples of different use cases using channels. 
+
+Key things to mention:
+
+- Channels are the backbone of Nextflow workflows. It passes information (data, parameters, values) into and between processes. 
+- Channels are how Nextflow allows you to run jobs in parallel - when set up correctly Nextflow will automatically figure out which jobs are ready to be run.
+- Clarify the difference between multiple inputs vs. multiple channels
+- DO NOT use publishDir as an input to a process. publishDir is a way to organise important output files after jobs finish running. Use channels.
 
 ## Part 2
