@@ -123,7 +123,13 @@ For example, why would a biologist care about learning Nextflow over a set of fu
 
 ### 1.3 Writing your first pipeline
 
-This is the first hands-on Nextflow exercise. In this lesson, you will guide learners through their initial Nextflow exercise by introducing them to the **fundamental building blocks of a minimal Nextflow script**. You'll cover the `process` and `workflow` scopes inside the `main.nf` file, focusing on key `process` compoenents like `input`, `ouput`, and `script`. Your main aim is to ensure learners understand the minimum components needed for a simple, working, one-step pipeline.
+This is the first hands-on Nextflow exercise. In this lesson, you will guide learners through their initial Nextflow exercise by introducing them to the **fundamental building blocks of a minimal Nextflow script**. You'll cover the `process` and `workflow` scopes inside the `main.nf` file, focusing on key `process` components like `input`, `ouput`, and `script`. Your main aim is to ensure learners understand the minimum components needed for a simple, working, one-step pipeline.
+
+To repeat the content, this is important and the model will be used in later steps:
+
+>The order of steps taken to build the process in the following exercises are intentional. We will be building processes by defining each process block starting with the script then the output. In later sections, we will add input and process directives to this order.
+>
+>This order is not prescriptive, however, the script logic often determines how the other process blocks should look like and this order can be helpful for breaking down building processes in a logical way. This approach will be continued in Part 2, when you build an RNAseq workflow!
 
 - Highlight that this lesson is to introduce only the minimum requirements for a Nextflow script.
 - Reinforce that there are many ways to achieve the same thing but it is important to be consistent (e.g. see individual concepts below).
@@ -183,9 +189,33 @@ Key things to mention:
 
 This lesson demonstrates how learners can leverage parameters to make your Nextflow pipelines flexible (not specififying fixed names, files, paths, or values) for many different files and options. The key idea to communicate is that we develop pipelines because, more often than not, need to run the same processing over many samples. If you develop the pipeline to work on one sample, it will need to be updated when the sample change. Parameters overcome this by allowing users to specify different values during runtime, or use a default if none is specified.
 
-These concepts are supported by hands-on exercises that 
+Reinforce the use of parameters through the exercises. For the last exercise, allow 5 minutes for learners to experiment adding different values (strings) to the `--greeting` and `--outdir` parameters. Suggest that they can use the solution and inspect the output but to have a go themselves. Remind learners that multi-word strings must be enclosed in either single or double quotes.
 
 ### 1.7 Adding processes
 
+This lesson is the first demonstration of connecting processes, where the output of `SAYHELLO` is used as an input to a new `CONVERTOUPPER` process.
 
-## Part 2
+Suggest spending minimal time demonstrating what `tr` does to allow learners more time to indpendently work through the exercise involving piecing together the `CONVERTTOUPPER` process. Encourage learners the use of hints.
+
+Recall that the order we suggest of adding a new process is reflected in the hints:
+
+1. `script`
+2. `output`
+3. `input`
+5. Updating `workflow{}`
+
+=== "Concept"
+
+    Accessing process outputs
+
+=== "Suggested response"
+
+    There are different ways to access outputs:
+
+    - Adding `.out` to the end of a process name only works for single-element channels
+    - For single-element channels, using `.out[0]` is identical to `.out`
+    - `emit` can be used to [name output](https://www.nextflow.io/docs/latest/process.html#naming-outputs)
+
+### 1.8 Dynamic naming
+
+Similar to lesson 1.6 Parameters, this lesson will guide learners to make pipelines more flexible and adaptable for use across samples by automatically (dynamically) naming output files based on the name of the input. This becomes important to correctly identify outputs when running across multiple samples or files.
