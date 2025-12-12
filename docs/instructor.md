@@ -136,28 +136,20 @@ To repeat the content, this is important and the model will be used in later ste
 - Ensure they grasp the core concept of having a `process` that does something simple, that is called in the `workflow`.
 - You can use an analogy of `process` being similar to a function in R or Python, but you need to call the function to run it.
 
-=== "Concept"
+=== "Syntax and styling"
 
     There may be FAQs around Nextflow syntax and styling. For example, if indentation matters - it does in e.g. Python, but Nextflow is relaxed. There are many ways to style, indent, comment, and order code (e.g. process blocks: input, output, script), as well as place process scopes (modules vs. main.nf) and parameters (workflow{}, nextflow.config).
-
-=== "Suggested response"
 
     - Nextflow is flexible, you can do things differently and achieve the same outcome without error
     - It is important to do things consistently for legibility
     - This is especially important when you collaborate with others
     - Recommend to adopt the approaches demonstrated in the workshop
 
-=== "Concept"
-    Use of single vs. double quotes
-
-=== "Suggested response"
+=== "Single vs. double quotes"
     
     String interpolation etc.
 
-=== "Concept"
-    script interpreter
-
-=== "Suggested response"
+=== "`script` block interpreter"
     
     bash by default, can use #!/bin/python. Recommended? usually not.
 
@@ -204,11 +196,7 @@ Recall that the order we suggest of adding a new process is reflected in the hin
 3. `input`
 5. Updating `workflow{}`
 
-=== "Concept"
-
-    Accessing process outputs
-
-=== "Suggested response"
+=== "Accessing process outputs"
 
     There are different ways to access outputs:
 

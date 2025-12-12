@@ -54,6 +54,8 @@ markdown_extensions:
   - pymdownx.inlinehilite
   - pymdownx.superfences:
       preserve_tabs: true
+  - pymdownx.tabbed:
+      alternate_style: true
   - attr_list
   - md_in_html
   - pymdownx.superfences
