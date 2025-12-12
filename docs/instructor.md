@@ -179,4 +179,13 @@ Key things to mention:
 - Clarify the difference between multiple inputs vs. multiple channels
 - DO NOT use publishDir as an input to a process. publishDir is a way to organise important output files after jobs finish running. Use channels.
 
+### 1.6 Parameters
+
+This lesson demonstrates how learners can leverage parameters to make your Nextflow pipelines flexible (not specififying fixed names, files, paths, or values) for many different files and options. The key idea to communicate is that we develop pipelines because, more often than not, need to run the same processing over many samples. If you develop the pipeline to work on one sample, it will need to be updated when the sample change. Parameters overcome this by allowing users to specify different values during runtime, or use a default if none is specified.
+
+These concepts are supported by hands-on exercises that 
+
+### 1.7 Adding processes
+
+
 ## Part 2
