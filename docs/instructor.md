@@ -109,9 +109,9 @@ All other preparation, rehearsals to prepare for confident delivery
 - Trainers type out code additions and explain as they type. This allows trainers to provide more context and explain what is being added. Also helps to slow the pace of delivery to allow learners to catch up. 
 - Trainers verbally announce when they are moving between windows or tabs. For example “I am now going to the VSCode terminal...”. Participants will need to manage going between the workshop content in their browser, VSCode, and Zoom and this will help them follow you 
 
-# Lesson guides 
+## Lesson guides 
 
-## Overall
+### Overall
 
 The goal of this workshop is to teach Nextflow best practices, and highlight the most important features to know and learn about amongst Nextflows large, and often daunting, repertoire. 
 
@@ -119,9 +119,9 @@ Whilst there is a lot of technical information that needs to be covered in detai
 
 For example, why would a biologist care about learning Nextflow over a set of functional bash scripts? Throughout the lessons, provide examples of where a particular feature would be useful in the context of a researcher running. These will be suggested in the lesson-specific subsections.
 
-## Part 1
+### Part 1
 
-### 1.3 Writing your first pipeline
+#### 1.3 Writing your first pipeline
 
 This is the first hands-on Nextflow exercise. In this lesson, you will guide learners through their initial Nextflow exercise by introducing them to the **fundamental building blocks of a minimal Nextflow script**. You'll cover the `process` and `workflow` scopes inside the `main.nf` file, focusing on key `process` components like `input`, `ouput`, and `script`. Your main aim is to ensure learners understand the minimum components needed for a simple, working, one-step pipeline.
 
@@ -137,7 +137,6 @@ To repeat the content, this is important and the model will be used in later ste
 - You can use an analogy of `process` being similar to a function in R or Python, but you need to call the function to run it.
 
 === "Syntax and styling"
-
     There may be FAQs around Nextflow syntax and styling. For example, if indentation matters - it does in e.g. Python, but Nextflow is relaxed. There are many ways to style, indent, comment, and order code (e.g. process blocks: input, output, script), as well as place process scopes (modules vs. main.nf) and parameters (workflow{}, nextflow.config).
 
     - Nextflow is flexible, you can do things differently and achieve the same outcome without error
@@ -153,7 +152,7 @@ To repeat the content, this is important and the model will be used in later ste
     
     bash by default, can use #!/bin/python. Recommended? usually not.
 
-### 1.4 Running pipelines
+#### 1.4 Running pipelines
 
 In this lesson, you will guide learners through executing the basic pipeline developed in the previous section using `nextflow run`. The focus here is to highlight the **key outputs, and help learners understand these in detail. This includes the Nextflow log that is printed to the terminal, the importance of unique run names and hashes, and the files output by the pipeline such as the `work` directory. Once the `work` directory is explained, you will lead into how this is used as a cache for resuming workflows with the `-resume` flag. Finally, you will explain the `publishDir` directory to show how outputs can be organised more conveniently.
 
@@ -162,7 +161,7 @@ In this lesson, you will guide learners through executing the basic pipeline dev
 - Be direct with learners: Nextflow runs produces many files. Using `publishDir` is a best practice to keep the outputs you want organised, in a predictable place, especially as workflows scale up.
 - This is a key feature that Nextflow has over, for example, bash scripts. You will need to manually write a checkpointing feature in bash, whereas it come "out of the box" in Nextflow.
 
-### 1.5 Inputs and channels
+#### 1.5 Inputs and channels
 
 This lesson introduces channels with exercises to create a channel, passing a string into a process, and updating the process to expect a string input.
 
@@ -177,13 +176,13 @@ Key things to mention:
 - Clarify the difference between multiple inputs vs. multiple channels
 - DO NOT use publishDir as an input to a process. publishDir is a way to organise important output files after jobs finish running. Use channels.
 
-### 1.6 Parameters
+#### 1.6 Parameters
 
 This lesson demonstrates how learners can leverage parameters to make your Nextflow pipelines flexible (not specififying fixed names, files, paths, or values) for many different files and options. The key idea to communicate is that we develop pipelines because, more often than not, need to run the same processing over many samples. If you develop the pipeline to work on one sample, it will need to be updated when the sample change. Parameters overcome this by allowing users to specify different values during runtime, or use a default if none is specified.
 
 Reinforce the use of parameters through the exercises. For the last exercise, allow 5 minutes for learners to experiment adding different values (strings) to the `--greeting` and `--outdir` parameters. Suggest that they can use the solution and inspect the output but to have a go themselves. Remind learners that multi-word strings must be enclosed in either single or double quotes.
 
-### 1.7 Adding processes
+#### 1.7 Adding processes
 
 This lesson is the first demonstration of connecting processes, where the output of `SAYHELLO` is used as an input to a new `CONVERTOUPPER` process.
 
@@ -204,6 +203,36 @@ Recall that the order we suggest of adding a new process is reflected in the hin
     - For single-element channels, using `.out[0]` is identical to `.out`
     - `emit` can be used to [name output](https://www.nextflow.io/docs/latest/process.html#naming-outputs)
 
-### 1.8 Dynamic naming
+#### 1.8 Dynamic naming
 
 Similar to lesson 1.6 Parameters, this lesson will guide learners to make pipelines more flexible and adaptable for use across samples by automatically (dynamically) naming output files based on the name of the input. This becomes important to correctly identify outputs when running across multiple samples or files.
+
+### Part 2
+
+#### 2.0 Introduction
+
+Goes over the scenario of converting bash scripts into a Nextflow pipeline. Part 2 aimed to replicate a "real-life" example of how a bioscientist would encounter and code a Nextflow pipeline for the first time. This is an important context-setting section where you will introduce the files and data used for Part 2, the bioinformatics tools, Nextflow files that you will be changing, and the high-level structure of the workflow that learners will have built by the end of the workshop.
+
+Note that the focus is to introduce and demonstrate how the foundational Nextflow concepts introduced in Part 1 is applied in a practical scenario and to provide the minimal context required to understand following lessons. Whilst you will guide learners in developing the worfklow, the focus is not to conduct bioinformatics or data analyses, nor to assess the input and output files of each step in-depth. 
+
+Each lesson (2.1 - 2.5) will focus on converting a bash script into a modular Nextflow process. This is to emphasise that there is some boilerplate that will not change across tools, scripts, and analyses in Nextflow pipelines. However, these must be tweaked to fit based on what will be input and output.
+
+#### 2.1 Our first process and container
+
+=== "Using containers in Nextflow"
+
+    There are many ways to manage software (e.g. modules, conda) and we consider using containers in Nextflow is the best practice. Containers package a tool together with its software environment so that everyone runs the same tool, same version, same dependencies, regardless of where the workflow is executed. As a Nextflow pipeline has many steps requiring different tools, using containers simplifies this and makes your pipeline reproducible.
+
+    There are many container platforms and repositories. For bioinformatics, particularly use in Nextflow, recommend learners to use Singularity (widely supported on HPC systems and suitable for shared environments) and BioContainers that are hosted on quay.io (plenty of pre-built containers for thousands of bioinformatics tools and supported by Nextflow, nf-core, Galaxy)
+
+    Learners do not need to understand the inner working of containers. The key things to communicate is knowing why they are used, where they come from, and how to apply it to processes in a pipeline.
+
+#### 2.2 Samplesheets, operators, and groovy
+
+#### 2.3 Multiple process inputs
+
+#### 2.4 Combining channels, multiple process outputs
+
+#### 2.5 Upscaling to multiple samples and introspection
+
+Most of this content goes beyond the scope of this workshop, and is covered in detail in the Nextflow on HPC workshop.
