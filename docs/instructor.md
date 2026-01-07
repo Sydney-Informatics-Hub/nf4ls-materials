@@ -209,6 +209,10 @@ Similar to lesson 1.6 Parameters, this lesson will guide learners to make pipeli
 
 ### Part 2
 
+Bash script -> process -> workflow -> run.
+
+Differences are in the input/output formats and how to pass information and data between processes.
+
 #### 2.0 Introduction
 
 Goes over the scenario of converting bash scripts into a Nextflow pipeline. Part 2 aimed to replicate a "real-life" example of how a bioscientist would encounter and code a Nextflow pipeline for the first time. This is an important context-setting section where you will introduce the files and data used for Part 2, the bioinformatics tools, Nextflow files that you will be changing, and the high-level structure of the workflow that learners will have built by the end of the workshop.
@@ -218,6 +222,8 @@ Note that the focus is to introduce and demonstrate how the foundational Nextflo
 Each lesson (2.1 - 2.5) will focus on converting a bash script into a modular Nextflow process. This is to emphasise that there is some boilerplate that will not change across tools, scripts, and analyses in Nextflow pipelines. However, these must be tweaked to fit based on what will be input and output.
 
 #### 2.1 Our first process and container
+
+- When reviewing the bash script, point out which line transfers over to the process definition
 
 === "Using containers in Nextflow"
 
@@ -229,10 +235,36 @@ Each lesson (2.1 - 2.5) will focus on converting a bash script into a modular Ne
 
 #### 2.2 Samplesheets, operators, and groovy
 
+- When reviewing the bash script, point out which line transfers over to the process definition
+
+- tuple introduced, focus on the why (grouping relevant data together). More context will be provided in coming steps
+
+- Operators are difficult, it uses groovy syntax, and it can be unclear which ones, and how to use them. The takeway is that you have to maniupulate the input information into the correct structure of the downstream process it is used in.
+
+- Encourage use of .view() and --resume in real development
+
 #### 2.3 Multiple process inputs
+
+Similar format to 2.1 and 2.2, build process from bash script
+
+=== "Accessing process outputs"
+
+    There are different ways to access outputs:
+
+    - Adding `.out` to the end of a process name only works for single-element channels
+    - For single-element channels, using `.out[0]` is identical to `.out`
+    - `emit` can be used to [name output](https://www.nextflow.io/docs/latest/process.html#naming-outputs)
+
+    Do same way
 
 #### 2.4 Combining channels, multiple process outputs
 
+The script and input follow the MultiQC Nextflow [integration recommendations](https://multiqc.info/docs/usage/pipelines/#nextflow). 
+
+Generally bad practice, as you want to be as explicit as possible with the files and folders required. This is for proper error handling and testing and development.
+
 #### 2.5 Upscaling to multiple samples and introspection
 
-Most of this content goes beyond the scope of this workshop, and is covered in detail in the Nextflow on HPC workshop.
+This is only an introduction to configuration. Most of this content goes beyond the scope of this workshop, and is covered in detail in the Nextflow on HPC workshop.
+
+Key takeaway is once you have a working pipeline for a single sample (paired-end read), you just update the samplesheet to scale up rather than editing any code in the pipeline.
