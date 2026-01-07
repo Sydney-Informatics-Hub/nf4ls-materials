@@ -209,39 +209,88 @@ Similar to lesson 1.6 Parameters, this lesson will guide learners to make pipeli
 
 ### Part 2
 
-Bash script -> process -> workflow -> run.
+=== "Part 2 goals and scope"
 
-Differences are in the input/output formats and how to pass information and data between processes.
+    Part 2 replicates a "real-life" example of how a bioscientist would encounter and code a Nextflow pipeline for the first time. The key goals of Part 2 include:
+
+    - Demonstrating how the foundational Nextflow concepts introduced in Part 1 is applied in a practical scenario
+    - Reiterate the key Nextflow concepts and components that are required for a simple bioinformatics workflow
+
+    What Part 2 is **not**:
+
+    - A guide on bioinformatics or data analyses, reviewing each input or output files and the inner workings of tools in detail
+    
+=== "Structured and repeated development across lessons"
+
+    Each lesson (2.1 - 2.5) will focus on converting a bash script into a modular Nextflow process. This is to emphasise that there is some boilerplate that will not change across tools, scripts, and analyses in Nextflow pipelines. However, these must be tweaked to fit based on what will be input and output.
+
+    For each lesson, you will guide learners to review:
+
+    1. An existing bash script that conducts one bioinformatics data processing step
+    2. Identify which components need to be implemented in a Nextflow process definition
+    3. Build that Nextflow process, step-by-step, following a similar order
 
 #### 2.0 Introduction
 
-Goes over the scenario of converting bash scripts into a Nextflow pipeline. Part 2 aimed to replicate a "real-life" example of how a bioscientist would encounter and code a Nextflow pipeline for the first time. This is an important context-setting section where you will introduce the files and data used for Part 2, the bioinformatics tools, Nextflow files that you will be changing, and the high-level structure of the workflow that learners will have built by the end of the workshop.
+This section provides the context for Part 2, such as the scenario of converting individual bash scripts into a simple, end-to-end Nextflow pipeline. 
 
-Note that the focus is to introduce and demonstrate how the foundational Nextflow concepts introduced in Part 1 is applied in a practical scenario and to provide the minimal context required to understand following lessons. Whilst you will guide learners in developing the worfklow, the focus is not to conduct bioinformatics or data analyses, nor to assess the input and output files of each step in-depth. 
+You will introduce:
 
-Each lesson (2.1 - 2.5) will focus on converting a bash script into a modular Nextflow process. This is to emphasise that there is some boilerplate that will not change across tools, scripts, and analyses in Nextflow pipelines. However, these must be tweaked to fit based on what will be input and output.
+- The files and data used for Part 2
+- The bioinformatics tool
+- Nextflow files that you will be changing
+- The high-level structure of the workflow that learners will have built by the end of the workshop.
 
 #### 2.1 Our first process and container
 
-- When reviewing the bash script, point out which line transfers over to the process definition
+=== "Bash script to Nextflow process"
 
+    This is the first occurrence of reviewing a bash script and converting it to a Nextflow process. Recall that, when defining a process, there is some boilerplate code that is unlikely to change (`input:`, `output:`, `script:`), but the contents of each need to be tailored (based on the bash scripts). 
+    
 === "Using containers in Nextflow"
 
     There are many ways to manage software (e.g. modules, conda) and we consider using containers in Nextflow is the best practice. Containers package a tool together with its software environment so that everyone runs the same tool, same version, same dependencies, regardless of where the workflow is executed. As a Nextflow pipeline has many steps requiring different tools, using containers simplifies this and makes your pipeline reproducible.
 
     There are many container platforms and repositories. For bioinformatics, particularly use in Nextflow, recommend learners to use Singularity (widely supported on HPC systems and suitable for shared environments) and BioContainers that are hosted on quay.io (plenty of pre-built containers for thousands of bioinformatics tools and supported by Nextflow, nf-core, Galaxy)
 
-    Learners do not need to understand the inner working of containers. The key things to communicate is knowing why they are used, where they come from, and how to apply it to processes in a pipeline.
+    Learners do not need to understand the inner working of containers. The key things to communicate is knowing:
+    
+    - Why they are used
+    - Where bioinformatics containers can be searched and retrieved from
+    - How to implement a Nextflow process that uses a specific container
 
 #### 2.2 Samplesheets, operators, and groovy
 
-- When reviewing the bash script, point out which line transfers over to the process definition
+=== "Tuples: grouping related data"
 
-- tuple introduced, focus on the why (grouping relevant data together). More context will be provided in coming steps
+    Tuples are introduced to group related pieces of information together (e.g. sample name + file paths) and prevent accidental mixing of file and metadata. At this stage, **focus on the why, not the mechanics.** 
 
-- Operators are difficult, it uses groovy syntax, and it can be unclear which ones, and how to use them. The takeway is that you have to maniupulate the input information into the correct structure of the downstream process it is used in.
+    More tuple usage will be visited in later lessons.
 
-- Encourage use of .view() and --resume in real development
+=== "Reshaping data with operators"
+
+    Operators are often one of the hardest concepts for Nextflow beginners, but one of the most important for developing reproducible and scalable pipelines. They use Groovy syntax and it may not be obvious:
+
+    - Which operator to use
+    - When to use it
+    - Why the input shape needs to change
+
+    Emphasise the **why**: operators exist to transform input data into the exact structure required by the next process.
+
+    At this stage, learners do not need to memorise operators. they need to understand that:
+
+    - Processes expect inputs in the correct format
+    - Operators are the tool used to get data into those formats
+
+    This section demonstrates only one example. Later lessons will showcase different requirements where different operators need to be used.
+
+=== "Development and debugging best practices"
+
+    Use this lesson to model real-world Nextflow development habits:
+
+    - Encourage frequent use of `.view()` to inspect channel outputs
+    - Encourage regular use of `-resume` to avoid re-running completed steps
+    - Normalise frequent and fast iteration when learners develop their own pipelines
 
 #### 2.3 Multiple process inputs
 
