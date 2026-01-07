@@ -294,26 +294,39 @@ You will introduce:
 
 #### 2.3 Multiple process inputs
 
-Similar format to 2.1 and 2.2, build process from bash script
-
 === "Accessing process outputs"
 
-    There are different ways to access outputs:
+    This lesson applies Lesson 1.7 to a bioinformatics use case. Recall that there are different valid ways to access outputs, such as:
 
     - Adding `.out` to the end of a process name only works for single-element channels
     - For single-element channels, using `.out[0]` is identical to `.out`
-    - `emit` can be used to [name output](https://www.nextflow.io/docs/latest/process.html#naming-outputs)
+    - `emit` can be used to [name outputs](https://www.nextflow.io/docs/latest/process.html#naming-outputs)
 
-    Do same way
+=== "When inputs should be grouped together vs. separated"
+
+    In this lesson, learners extend their workflow by defining a process that accepts multiple inputs and chaining it to upstream processes. 
+    
+    One thing to clarify is when processes should have inputs all in a single tuple, or as separate inputs.
+
+    Emphasise to keep files, values, and metadata together in a tuple if they must stay together (e.g. sample ID, paired FASTQs).
+    
+    Inputs should be seperate if they can be shared across samples, or are constant across samples. For example, the reference index `transcriptome.fa` can be used across different paired FASTQs.
+
+    Grouping everything as a tuple introduces unecessary data processing steps, while splitting incorrectly can result in unexpected behaviour, such as not all samples running.
 
 #### 2.4 Combining channels, multiple process outputs
 
-The script and input follow the MultiQC Nextflow [integration recommendations](https://multiqc.info/docs/usage/pipelines/#nextflow). 
+This lesson demonstrates how combining channels allows multiple process outputs to be collected and used by a single downstream process.
 
-Generally bad practice, as you want to be as explicit as possible with the files and folders required. This is for proper error handling and testing and development.
+MultiQC is the ideal example to demonstrate this as it requires all bioinformatics tool outputs to be aggregated and run in a single output.
+
+Note that the `input: path "*"` and `script: multiqc .` blocks follow the MultiQC Nextflow [integration recommendations](https://multiqc.info/docs/usage/pipelines/#nextflow). 
+
+State that this permissive pattern is generally bad practice. Communicate to learners that it is highly preferred to be as explicit the exact files and folders required. This improves error handling, testing, and future maintainability.
 
 #### 2.5 Upscaling to multiple samples and introspection
 
-This is only an introduction to configuration. Most of this content goes beyond the scope of this workshop, and is covered in detail in the Nextflow on HPC workshop.
+This final lesson demonstrates how a workflow that works for a single sample can be scaled to many samples without modifying the pipeline code itself. Advise learners that scaling in Nextflow is primarily a configuration problem, not a coding problem. By updating the samplesheet, the same workflow logic is reused to run tasks in parallel across multiple samples.
 
-Key takeaway is once you have a working pipeline for a single sample (paired-end read), you just update the samplesheet to scale up rather than editing any code in the pipeline.
+It is important to communicate that this section is **only an introduction to configuration, benchmarking, and scaling concepts**. Direct learners to the [Nextflow on HPC workshop](https://sydney-informatics-hub.github.io/nextflow-hpc-workshop/) which covers these topics in detail, and was developed as a sequel to this introductory workshop.
+
