@@ -10,8 +10,6 @@ of the [Nextflow for the Life Sciences](https://github.com/Sydney-Informatics-Hu
 This repo is inteded for **traianers and facilitators** to 
 deliver their own workshops, including guidance on lesson structure, teaching notes, exercises, and delivery considerations.
 
----
-
 ## Audience
 
 These materials are designed for:
@@ -21,8 +19,6 @@ These materials are designed for:
 - Contributors developing or maintaining Nextflow training curricula
 
 They assume familiarity with basic command-line usage and workflow concepts.
-
----
 
 ## Licence
 
@@ -39,15 +35,11 @@ Under the following terms:
 
 See the [`LICENSE`](LICENSE) file for full licence text.
 
----
-
 ## Citation
 
 If you use or adapt these materials, please cite them using the information in [`CITATION.cff`](CITATION.cff).
 
 A DOI will be provided via Zenodo for released versions of this repository.
-
----
 
 ## Contributing
 
@@ -62,8 +54,6 @@ Please see [`CONTRIBUTING.md`](CONTRIBUTING.md) for contribution guidelines.
 
 All contributors are expected to follow the
 [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md).
-
---- 
 
 ## Acknowledgements  
 
