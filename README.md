@@ -65,6 +65,10 @@ Primary contributors (lead trainers and developers, reviewers, facilitators, and
 
 ## How to setup your own copy of the training materials
 
+To prepare for your workshop delivery, you will create a separate fork of this repository. This is to ensure that you can freely change the materials to suit your delivery, and keep this repository as the "source" materials.
+
+_Note: Under the CC BY 4.0 licence, you are free to share and and adapt the materials, with appropriate attribution._
+
 **Creating a copy of the repository**
 
 1. Fork this repo
