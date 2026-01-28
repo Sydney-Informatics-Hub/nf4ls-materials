@@ -15,23 +15,18 @@ The workshop is divided into two parts:
 - **Part 1:** Foundations of Nextflow (processes, workflow scopes, channels, inputs/outputs, operators) 
 - **Part 2:** Applying these foundations to build a real-world RNA-seq workflow 
 
+This workshop has been delivered as an online workshop, and as a hybrid format  
+
 The content is delivered as demonstrations (instructors guide participants through the rendered webpage) combined with hands-on exercises as either a code-along (follow the instructor), or independently (time is provided for learners to attempt exercises).
 
-## Workshop components 
+## Getting started
 
-There are several links and documents required to run this workshop. This is a reference that compiles all of them. Instructions provided later in the document. 
 
-| Component            | Description                                                                                                                                                    |
-| -------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Instructor notes     | This page.                                                                                                                                                 |
-| [Materials Repository](https://github.com/Sydney-Informatics-Hub/nf4ls-materials) | GitHub repository to generate the github pages with the teaching materials, content, and exercises                                                             |
-| [Data repository](https://github.com/Sydney-Informatics-Hub/nf4ls-data)      | GitHub repository to setup a new environment for attendees. Includes installing all required software, folder structure and files required to run the workshop |
-
-## Strengths and weakenesses of the workshop
+## Workshop feedback
 
 This section reflects on the feedback and experience from delivering this content from past workshops. These notes are compiled directly from participant (learner) feedback, and discussion between trainers, facilitators, and coordinators.
 
-### Strengths 
+### To keep 
 
 Several elements of the current workshop have proven particularly effective and should be aimed to be kept in future delivery.
 
@@ -51,7 +46,7 @@ Many aspects of effective Nextflow development (e.g., naming, structure, dataflo
 
 The workshop needs the same folder structure and input files. Configuring learner compute environments on an Ubuntu VM (e.g. previously NCI Nirin, Nectar cloud) ensures all participants are using the same operating system, software version, and files. This has worked fantastically and allowed the workshop to focus on the delivery of teaching material. 
 
-### Weaknesses and suggested improvements 
+### To improve
 
 While the workshop has been well-received, these are several areas that could be optionally improved to strengthen learning outcomes and meet sound curriculum design. 
 
@@ -81,28 +76,37 @@ Suggested improvements:
 - Remove section 1.2, or move this to a brief overview at the start of the next section 
 - Use the gained time to focus on the Nextflow-specific concepts towards the end of Part 1 
 
+**Other delivery formats**
+
+This workshop has been delivered online, and as a hybrid distributed model. Instructions and material here have been adapted to suit these models and may not account for other formats.
+
 ## Pre-workshop
 
-Familiarise yourself with the content by running through the self-directed workshop at TBA 
+There are several steps in order to prepare for workshop delivery.
+
+_SIH and the Australian BioCommons are working towards providing access to a a pre-configured compute environments for self-directed learning, as well as setting up VMs._
+
+1. Familiarise yourself with the content by running through the workshop.
+2. Identify the compute [resources and requirements](../setup/README.md/#machine-requirements) for participants and training team.
 
 It is essential that all participants and trainers use the same version of software and have the same computational resources. We highly recommend you configure virtual machines for learners to access and use for the workshop exercises.  
 
-See nf4ls-data: Machine requirements for the minimum specifications required per user. 
+3. Configure your own fork of the materials. See the [how-to guide](../README.md/#how-to-setup-your-own-copy-of-the-training-materials).
 
-Configure your own fork of the materials, following nf4ls-materials: How to setup your own copy of the training materials 
-
-Amend the rendered page with your workshop details (e.g. trainers, facilitators) 
+4. Amend the rendered page with your workshop details (e.g. trainers and facilitators involved, delivery details, institution) 
 
 Optionally:
 
 - Add, change, amend any content on your fork 
-- Suggest changes to the nf4ls-materials or nf4ls-data content so future instructors can benefit from your improvements. See contribution guidelines (coming soon)
+- Suggest changes to the nf4ls-materials content so future instructors can benefit from your improvements. See the [contribution guidelines](../CONTRIBUTING.md).
 
-On your selected infrastructure, follow nf4ls-data: Installation and setup to configure an environment with all software, containers, and files required for the workshop.
+5. On your selected infrastructure, follow the [Setup instructions](../setup/README.md/#how-to-setup-a-new-environment) to install and  configure an environment with all software, containers, and files required for the workshop.
 
 All other preparation, rehearsals to prepare for confident delivery 
 
 ## Delivery tips 
+
+This workshop has been delivered and adapted for online delivery, with lead trainers sharing their screen and communicating content via Zoom. These tips are adapted for this format, and may not fit other formats such as full in-person delivery with a single trainer. 
 
 - Have VSCode, and the rendered content on your screen as you deliver 
 - Trainers invite learners to copy and paste code blocks throughout the workshop for accuracy (i.e. avoid typos that result in pipeline errors). 
@@ -119,7 +123,19 @@ Whilst there is a lot of technical information that needs to be covered in detai
 
 For example, why would a biologist care about learning Nextflow over a set of functional bash scripts? Throughout the lessons, provide examples of where a particular feature would be useful in the context of a researcher running. These will be suggested in the lesson-specific subsections.
 
-### Part 1
+### Part 1 - Fundamental Nextflow Concepts
+
+| Lesson                              | Teaching Objective                                            | Learning Outcome                                                                              | Learning Experience                                                    | Approx. Time |
+| ----------------------------------- | ------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------------ |
+| **1.0 Introduction to Nextflow** | High-level overview of Nextflow and its uses | Learners can identify the context of preliminary uses for bioinformatics pipelines                              | Lecture             | 10 min    |
+| **1.1-1.2 Introduciton to Part 1 and Hello World!** | Introduce the structure of the iterative pipeline for Part 1 and the bash commands used | Learners can identify the high-level structure of piecing together bash commands in a pipeline                             | Demonstration and code-along              | 15 min    |
+| **1.3 Writing your first pipeline** | Introduce the minimum viable structure of a Nextflow pipeline | Learners can identify and write a simple `process` and `workflow`                             | Guided code-along building a minimal pipeline step-by-step             | 20 min min    |
+| **1.4 Running pipelines**           | Explain how Nextflow executes workflows and manages outputs   | Learners can run a pipeline, interpret logs, and understand `work`, caching, and `publishDir` | Live execution, log walkthrough, discussion of outputs and caching     | 15 min    |
+| **1.5 Inputs and channels**         | Introduce channels as the core dataflow mechanism             | Learners understand why channels are required and how to pass simple inputs                   | Conceptual explanation + small exercises creating and passing channels | 20 min    |
+| **1.6 Parameters**                  | Make pipelines flexible using parameters                      | Learners can define and override parameters at runtime                                        | Code-along with parameterised examples and short experimentation       | 15 min    |
+| **1.7 Adding processes**            | Demonstrate chaining processes together                       | Learners can connect processes using outputs as inputs                                        | Guided exercise building and wiring a second process                   | 15 min    |
+| **1.8 Dynamic naming**              | Introduce dynamic output naming                               | Learners can generate outputs that scale across inputs                                        | Short demonstration + modification of existing code                    | 15 min    |
+
 
 #### 1.3 Writing your first pipeline
 
@@ -208,6 +224,16 @@ Recall that the order we suggest of adding a new process is reflected in the hin
 Similar to lesson 1.6 Parameters, this lesson will guide learners to make pipelines more flexible and adaptable for use across samples by automatically (dynamically) naming output files based on the name of the input. This becomes important to correctly identify outputs when running across multiple samples or files.
 
 ### Part 2
+
+| Lesson                                  | Teaching Objective                                 | Learning Outcome                                                       | Learning Experience                                           | Approx. Time |
+| --------------------------------------- | -------------------------------------------------- | ---------------------------------------------------------------------- | ------------------------------------------------------------- | ------------ |
+| **2.0 Introduction**                    | Set context for Part 2 workflow                    | Learners understand the scenario, data, and end goal                   | Instructor walkthrough of data, tools, and workflow structure | 10 min    |
+| **2.1 First process & containers**      | Convert a bash script into a containerised process | Learners can map bash scripts to Nextflow processes and use containers | Code-along converting bash → process with container           | 20 min    |
+| **2.2 Samplesheets, operators, Groovy** | Introduce structured inputs and data reshaping     | Learners understand why tuples and operators are required              | Concept-focused walkthrough with examples and debugging demos | 30 min    |
+| **2.3 Multiple process inputs**         | Teach input structuring and process chaining       | Learners can decide when to group vs separate inputs                   | Guided workflow wiring with discussion of design decisions    | 25 min    |
+| **2.4 Combining channels & outputs**    | Demonstrate aggregation patterns                   | Learners understand when aggregation is appropriate (e.g. MultiQC)     | Example-driven explanation using MultiQC                      | 30 min    |
+| **2.5 Upscaling & introspection**       | Show how pipelines scale without code changes      | Learners understand scaling via configuration and samplesheets         | Demonstration + discussion; pointer to HPC workshop           | 25 min    |
+
 
 === "Part 2 goals and scope"
 

@@ -1,9 +1,6 @@
 # NF4LS: Data and environment setup
 
-This repo is a [mirror](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository#mirroring-a-repository)
-of the [Nextflow for the Life Sciences](https://github.com/Sydney-Informatics-Hub/hello-nextflow-2025) workshop.
-
-This repo is used to setup a new environment with all software, dependencies, folder structure, and input files for learners to run the workshop.
+This folder contains all files and scripts required to setup a new environment with all software, dependencies, folder structure, and input files for learners to run the workshop.
 
 ## Machine requirements
 
@@ -51,8 +48,8 @@ and files required to run the entire workshop.
 
 ```bash
 cd $HOME && \
-git clone https://github.com/Sydney-Informatics-Hub/nf4ls-data.git && \
-cd nf4ls-data
+git clone https://github.com/Sydney-Informatics-Hub/nf4ls-materials.git && \
+cd nf4ls-materials/setup
 ```
 
 Run the install script. This uses imported functions from `lib/*.sh` for

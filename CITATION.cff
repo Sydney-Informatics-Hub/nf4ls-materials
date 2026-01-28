@@ -1,0 +1,84 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: 'Nextflow for the Life Sciences: Trainer Materials'
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Frederick
+    family-names: Jaya
+    orcid: 'https://orcid.org/0000-0002-4019-7026'
+  - given-names: Georgina
+    family-names: Samaha
+    orcid: 'https://orcid.org/0000-0003-0419-1476'
+  - given-names: Michael
+    family-names: Geaghan
+    orcid: 'https://orcid.org/0000-0002-4350-8600'
+  - given-names: Chris
+    family-names: Hakkart
+    orcid: 'https://orcid.org/0000-0001-5007-2684'
+  - given-names: Melissa
+    family-names: Burke
+    orcid: 'https://orcid.org/0000-0002-5571-8664'
+  - given-names: Giorgia
+    family-names: Mori
+    orcid: 'https://orcid.org/0000-0003-3469-5632'
+  - given-names: Uwe
+    family-names: Winter
+  - given-names: Wenjing
+    family-names: Xue
+  - given-names: Matthew
+    family-names: Downton
+  - given-names: Cali
+    family-names: Willet
+    orcid: 'https://orcid.org/0000-0001-8449-1502'
+  - given-names: Mitchell
+    family-names: O'Brien
+    orcid: 'https://orcid.org/0000-0003-0662-9101'
+  - given-names: Ziad
+    family-names: Al Bkhetan
+    orcid: 'https://orcid.org/0000-0002-4032-5331'
+  - given-names: Magdalena
+    family-names: Antczak
+    orcid: 'https://orcid.org/0000-0003-1503-1849'
+  - given-names: Marie-Emilie
+    family-names: Gauthier
+    orcid: 'https://orcid.org/0000-0002-5256-9165'
+  - given-names: Sarah
+    family-names: Beecroft
+    orcid: 'https://orcid.org/0000-0002-3935-2279'
+  - given-names: Prathiba
+    family-names: Raghunandan
+  - given-names: Kisaru
+    family-names: Liyanage
+  - given-names: John
+    family-names: Salamon
+  - given-names: Michael
+    family-names: Roach
+  - given-names: Emma
+    family-names: Gail
+    orcid: 'https://orcid.org/0000-0002-1696-6673'
+  - given-names: Grace
+    family-names: Hall
+    orcid: 'https://orcid.org/0000-0002-5105-8347'
+  - given-names: Thanh
+    family-names: Nguyen
+  - given-names: Eric
+    family-names: Urng
+  - given-names: Matthew
+    family-names: Hobbs
+    orcid: 'https://orcid.org/0000-0002-6879-1369'
+repository-code: 'https://github.com/Sydney-Informatics-Hub/nf4ls-materials'
+url: 'https://github.com/Sydney-Informatics-Hub/nf4ls-materials'
+abstract: >-
+  Guide and materials for training delivery of introductory
+  Nextflow concepts to build bioinformatics pipelines.
+keywords:
+  - nextflow
+  - bioinformatics
+  - workflows
+  - training
+license: CC-BY-4.0
