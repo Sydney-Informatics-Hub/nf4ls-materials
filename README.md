@@ -1,5 +1,3 @@
-[![DOI](https://zenodo.org/badge/1108041455.svg)](https://doi.org/10.5281/zenodo.18395902)
-
 # Nextflow for the Life Sciences: Training materials
 
 These materials support the training and onboarding of instructors to deliver a hands-on and practical introduction
@@ -61,7 +59,10 @@ All contributors are expected to follow the
 
 These materials were primarily developed by the Sydney Informatics Hub and Seqera, and is continued to be maintained by the Sydney Informatics Hub. Development and previous workshop delivery of the materials were enabled by the Australian BioCommons' BioCLI Platforms Project (NCRIS via Bioplatforms Australia).
 
-Primary contributors (lead trainers and developers, reviewers, facilitators, and infrastructure providers) are listed in [`AUTHORS`](AUTHORS). 
+Primary contributors to these training materials are listed in [`AUTHORS`](AUTHORS), with a full list of past workshop trainers, coordinators, facilitators and reviewers mentioned in the following:
+
+- Hakkaart, C., Jaya, F., Samaha, G., & Al Bkhetan, Z. (2024). WORKSHOP: Hello Nextflow!. Zenodo. [https://doi.org/10.5281/zenodo.14532850](https://doi.org/10.5281/zenodo.14532850)
+- Jaya, F., Geaghan, M., Xue, W., Antczak, M., Gauthier, M.-E., Beecroft, S., Raghunandan, P., Liyanage, K., Salamon, J., Roach, M., Gail, E., Hall, G., Lupat, R., Thanh, N., Urng, E., Hobbs, M., & O'Brien, M. (2025). WORKSHOP: Nextflow for the life sciences. Zenodo. [https://doi.org/10.5281/zenodo.16791039](https://doi.org/10.5281/zenodo.16791039)
 
 ---
 
