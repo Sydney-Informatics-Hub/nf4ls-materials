@@ -1,3 +1,5 @@
+[![DOI](https://zenodo.org/badge/1108041455.svg)](https://doi.org/10.5281/zenodo.18395902)
+
 # Nextflow for the Life Sciences: Training materials
 
 These materials support the training and onboarding of instructors to deliver a hands-on and practical introduction
