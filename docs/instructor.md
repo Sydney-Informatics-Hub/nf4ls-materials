@@ -19,10 +19,7 @@ This workshop has been delivered as an online workshop, and as a hybrid format
 
 The content is delivered as demonstrations (instructors guide participants through the rendered webpage) combined with hands-on exercises as either a code-along (follow the instructor), or independently (time is provided for learners to attempt exercises).
 
-## Getting started
-
-
-## Workshop feedback
+## Workshop feedback and design
 
 This section reflects on the feedback and experience from delivering this content from past workshops. These notes are compiled directly from participant (learner) feedback, and discussion between trainers, facilitators, and coordinators.
 
@@ -80,7 +77,7 @@ Suggested improvements:
 
 This workshop has been delivered online, and as a hybrid distributed model. Instructions and material here have been adapted to suit these models and may not account for other formats.
 
-## Pre-workshop
+## Preparing to deliver the workshop
 
 There are several steps in order to prepare for workshop delivery.
 
@@ -162,11 +159,18 @@ To repeat the content, this is important and the model will be used in later ste
 
 === "Single vs. double quotes"
     
-    String interpolation etc.
+    **Double quotes** must be used when a variable needs to be passed. Single quotes will interpret a string literally. For example:
+        
+        - "Hello ${name}" -> `Hello Fred`
+        - 'Hello Fred' -> `Hello Fred`
+        - "Hello Fred" -> `Hello Fred`
+        - 'Hello ${name}' -> `Hello ${name}`"
+
+    Learners will gain practice with hands-on exercises requiring correct use of single/double quotes throughout the workshop.
 
 === "`script` block interpreter"
     
-    bash by default, can use #!/bin/python. Recommended? usually not.
+    By default, the `script:` block in a process is executed with bash. It is possible to use a different interpreter via a shebang (e.g. `#`/usr/bin/env Rscript` but can introduce some added complexity. Whilst out of scope for this introductory workshop, suggest adding scripts in the  [`./bin` directory](https://training.nextflow.io/2.1/advanced/structure/#bin).
 
 #### 1.4 Running pipelines
 

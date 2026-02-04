@@ -7,8 +7,12 @@ a simple bioinformatics workflow.
 This repo was developed as a [mirror](https://docs.github.com/en/repositories/creating-and-managing-repositories/duplicating-a-repository#mirroring-a-repository)
 of the [Nextflow for the Life Sciences](https://github.com/Sydney-Informatics-Hub/hello-nextflow-2025) delivered in 2025.
 
-This repo is inteded for **traianers and facilitators** to 
+This repo is inteded for **trainers and facilitators** to 
 deliver their own workshops, including guidance on lesson structure, teaching notes, exercises, and delivery considerations.
+
+**🚀 Getting Started**
+
+Planning to deliver this workshop yourself? **Start with the [Instructor Notes](https://sydney-informatics-hub.github.io/nf4ls-materials/instructor/)** for an overview of the content, preparing compute environments, and tips to deliver the workshop confidently!
 
 ## Audience
 
