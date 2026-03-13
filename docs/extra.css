@@ -11,3 +11,7 @@
   --md-primary-fg-color--light: #ee806b;
   --md-typeset-color:           #cccccc;
 }
+
+.grid.cards {
+  grid-template-columns: repeat(3, 1fr);
+}

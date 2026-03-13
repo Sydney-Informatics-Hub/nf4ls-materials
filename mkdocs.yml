@@ -3,11 +3,10 @@ repo_url: https://github.com/Sydney-Informatics-Hub/nf4ls-materials
 repo_name: Sydney-Informatics-Hub/nf4ls-materials
 
 nav:
-  - Instructor guide:
-    - Who is your audience?: instructor/audience.md # preamble
-    - Training logistics: instructor/logistics.md # schedules
-    - Training environment: instructor/environment.md # compute and software
-    - Training materials: instructor/materials.md # datasets and exercises
+  - Home: index.md
+  - Training logistics: instructor/logistics.md
+  - Training environment: instructor/environment.md
+  - Training materials: instructor/materials.md
 
 theme:
   name: material
@@ -40,6 +39,9 @@ markdown_extensions:
       preserve_tabs: true
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - attr_list
   - md_in_html
 
