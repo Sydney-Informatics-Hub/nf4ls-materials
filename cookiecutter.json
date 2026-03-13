@@ -1,13 +1,6 @@
 {
-  "repo_name": "training-materials",
-  "site_name": "Nextflow for Life Sciences Training Materials",
-  "description": "Training workshop materials",
-  "github_username": "georgiesamaha",
-  "author_name": "Sydney Informatics Hub",
-  "_copy_without_render": [
-    "setup/**",
-    "*.sh",
-    "*.nf",
-    "*.config"
-  ]
+    "app_name": "",
+    "description": "",
+    "github_username": "",
+    "author_name": ""
 }
