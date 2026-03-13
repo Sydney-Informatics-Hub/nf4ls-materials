@@ -1,0 +1,22 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: '{{cookiecutter.site_name}}'
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: ''
+    family-names: ''
+repository-code: 'https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}'
+url: 'https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}'
+abstract: >-
+  {{cookiecutter.description}}
+keywords:
+  - nextflow
+  - bioinformatics
+  - workflows
+  - training
+license: CC-BY-4.0

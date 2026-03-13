@@ -1,0 +1,83 @@
+name: Populate repository from template
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  setup-repo:
+    # Only run when this repo has been created from the template (not in the template itself)
+    if: ${{ github.repository != 'Sydney-Informatics-Hub/nf4ls-materials' }}
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.head_ref }}
+
+      - name: Install cookiecutter
+        run: pip3 install cookiecutter
+
+      - uses: actions/github-script@v6
+        id: fetch-repo-and-user-details
+        with:
+          script: |
+            const query = `query($owner:String!, $name:String!) {
+              repository(owner:$owner, name:$name) {
+                name
+                description
+                owner {
+                  login
+                  ... on User {
+                    name
+                  }
+                  ... on Organization {
+                    name
+                  }
+                }
+              }
+            }`;
+            const variables = {
+              owner: context.repo.owner,
+              name: context.repo.repo
+            }
+            const result = await github.graphql(query, variables)
+            return result
+
+      - name: Build out template
+        env:
+          INFO: ${{ steps.fetch-repo-and-user-details.outputs.result }}
+        run: |
+          export REPO_NAME=$(echo $INFO | jq -r '.repository.name')
+          export DESCRIPTION=$(echo $INFO | jq -r '.repository.description // "Training workshop materials"')
+          export GITHUB_LOGIN=$(echo $INFO | jq -r '.repository.owner.login')
+          export AUTHOR_NAME=$(echo $INFO | jq -r '.repository.owner.name // .repository.owner.login')
+
+          # Run cookiecutter on this repo's own template structure
+          pushd /tmp
+          cookiecutter "$GITHUB_WORKSPACE" --no-input \
+            repo_name="$REPO_NAME" \
+            site_name="$REPO_NAME" \
+            description="$DESCRIPTION" \
+            github_username="$GITHUB_LOGIN" \
+            author_name="$AUTHOR_NAME"
+          popd
+
+          # Remove template scaffolding
+          rm -rf .github/
+          rm -rf '{{cookiecutter.repo_name}}'
+          rm -f cookiecutter.json
+
+          # Move generated content to repo root
+          shopt -s dotglob
+          rsync -a /tmp/$REPO_NAME/ .
+
+      - name: Push changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Initialize from nf4ls-materials template"
+          push_options: "--force"
