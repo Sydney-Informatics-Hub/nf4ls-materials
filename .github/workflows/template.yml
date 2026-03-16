@@ -7,7 +7,7 @@ on:
 jobs:
   setup-repo:
     # Only run when this repo has been created from the template (not in the template itself)
-    if: ${{ github.repository != 'Sydney-Informatics-Hub/nf4ls-materials' }}
+    if: github.repository != 'Sydney-Informatics-Hub/nf4ls-materials'
     runs-on: ubuntu-latest
 
     permissions:
@@ -17,54 +17,37 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.head_ref }}
+          token: ${{ secrets.WORKFLOW_TOKEN }}
 
       - name: Install cookiecutter
         run: pip3 install cookiecutter
 
-      - uses: actions/github-script@v6
-        id: fetch-repo-and-user-details
-        with:
-          script: |
-            const query = `query($owner:String!, $name:String!) {
-              repository(owner:$owner, name:$name) {
-                name
-                description
-                owner {
-                  login
-                  ... on User {
-                    name
-                  }
-                  ... on Organization {
-                    name
-                  }
-                }
-              }
-            }`;
-            const variables = {
-              owner: context.repo.owner,
-              name: context.repo.repo
-            }
-            const result = await github.graphql(query, variables)
-            return result
+      - name: Fetch repo details
+        id: repo_details
+        run: |
+          RESPONSE=$(curl -s -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            -H "Accept: application/vnd.github.v3+json" \
+            https://api.github.com/repos/${{ github.repository }})
+
+          REPO_NAME=$(echo $RESPONSE | jq -r '.name')
+          DESCRIPTION=$(echo $RESPONSE | jq -r '.description // "Training workshop materials"')
+          GITHUB_LOGIN=$(echo $RESPONSE | jq -r '.owner.login')
+          AUTHOR_NAME=$(echo $RESPONSE | jq -r '.owner.name // .owner.login')
+
+          echo "repo_name=$REPO_NAME" >> $GITHUB_OUTPUT
+          echo "description=$DESCRIPTION" >> $GITHUB_OUTPUT
+          echo "github_username=$GITHUB_LOGIN" >> $GITHUB_OUTPUT
+          echo "author_name=$AUTHOR_NAME" >> $GITHUB_OUTPUT
 
       - name: Build out template
-        env:
-          INFO: ${{ steps.fetch-repo-and-user-details.outputs.result }}
         run: |
-          export REPO_NAME=$(echo $INFO | jq -r '.repository.name')
-          export DESCRIPTION=$(echo $INFO | jq -r '.repository.description // "Training workshop materials"')
-          export GITHUB_LOGIN=$(echo $INFO | jq -r '.repository.owner.login')
-          export AUTHOR_NAME=$(echo $INFO | jq -r '.repository.owner.name // .repository.owner.login')
-
-          # Run cookiecutter on this repo's own template structure
           pushd /tmp
           cookiecutter "$GITHUB_WORKSPACE" --no-input \
-            repo_name="$REPO_NAME" \
-            site_name="$REPO_NAME" \
-            description="$DESCRIPTION" \
-            github_username="$GITHUB_LOGIN" \
-            author_name="$AUTHOR_NAME"
+            repo_name="${{ steps.repo_details.outputs.repo_name }}" \
+            site_name="${{ steps.repo_details.outputs.repo_name }}" \
+            description="${{ steps.repo_details.outputs.description }}" \
+            github_username="${{ steps.repo_details.outputs.github_username }}" \
+            author_name="${{ steps.repo_details.outputs.author_name }}"
           popd
 
           # Remove template scaffolding
@@ -74,10 +57,12 @@ jobs:
 
           # Move generated content to repo root
           shopt -s dotglob
-          rsync -a /tmp/$REPO_NAME/ .
+          rsync -a /tmp/${{ steps.repo_details.outputs.repo_name }}/ .
 
-      - name: Push changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: "Initialize from nf4ls-materials template"
-          push_options: "--force"
+      - name: Commit and push
+        run: |
+          git config user.email "action@github.com"
+          git config user.name "GitHub Action"
+          git add .
+          git commit -m "Initialize from nf4ls-materials template"
+          git push --force origin main

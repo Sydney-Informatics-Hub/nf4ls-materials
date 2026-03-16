@@ -1,6 +1,6 @@
-site_name: {{cookiecutter.site_name}}
-repo_url: https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}
-repo_name: {{cookiecutter.github_username}}/{{cookiecutter.repo_name}}
+site_name: Nextflow for the Life Sciences Training Materials
+repo_url: https://github.com/Sydney-Informatics-Hub/nf4ls-materials
+repo_name: Sydney-Informatics-Hub/nf4ls-materials
 
 nav:
   - Home: index.md
