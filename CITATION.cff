@@ -8,8 +8,23 @@ message: >-
   metadata from this file.
 type: software
 authors:
-  - given-names: ''
-    family-names: ''
+  - family-names: "Samaha"
+    given-names: "Georgina"
+    orcid: "0000-0003-0419-1476"
+  - family-names: "Geaghan"
+    given-names: "Michael"
+    orcid: "0000-0002-4350-8600"
+  - family-names: "Jaya"
+    given-names: "Frederick"
+    orcid: "0000-0002-4019-7026"
+  - family-names: "O’Brien"
+    given-names: "Mitchell"
+    orcid: "0000-0003-0662-9101"
+  - family-names: "Mori"
+    given-names: "Giorgia"
+    orcid: "0000-0003-3469-5632"
+
+
 repository-code: 'https://github.com/Sydney-Informatics-Hub/nf4ls-materials'
 url: 'https://github.com/Sydney-Informatics-Hub/nf4ls-materials'
 abstract: >-
