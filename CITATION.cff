@@ -2,7 +2,7 @@
 # Visit https://bit.ly/cffinit to generate yours today!
 
 cff-version: 1.2.0
-title: '{{cookiecutter.site_name}}'
+title: Nextflow for the Life Sciences Training Materials
 message: >-
   If you use this software, please cite it using the
   metadata from this file.
@@ -10,13 +10,14 @@ type: software
 authors:
   - given-names: ''
     family-names: ''
-repository-code: 'https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}'
-url: 'https://github.com/{{cookiecutter.github_username}}/{{cookiecutter.repo_name}}'
+repository-code: 'https://github.com/Sydney-Informatics-Hub/nf4ls-materials'
+url: 'https://github.com/Sydney-Informatics-Hub/nf4ls-materials'
 abstract: >-
-  {{cookiecutter.description}}
+  Nextflow for the Life Sciences Training Materials bundle.
 keywords:
   - nextflow
   - bioinformatics
   - workflows
   - training
+  - cli
 license: CC-BY-4.0
