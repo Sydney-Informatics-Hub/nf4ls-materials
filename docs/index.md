@@ -17,26 +17,28 @@ It will help you to:
 
 <div class="grid cards" markdown>
 
--   :material-school:{ .lg .middle } **Training logistics**
+-  :material-cog:{ .lg .middle } **Training logistics**
 
     ---
 
-    [:octicons-arrow-right-24: Training modules, timings, and delivery considerations](instructor/logistics.md)
+    [:octicons-arrow-right-24: Workshop structure, timings, and delivery considerations](instructor/logistics.md)
 
--   :material-human-male-board:{ .lg .middle } **Training environment**
-
-    ---
-
-    [:octicons-arrow-right-24: Software, containers, and files required for the workshop](instructor/environment.md)
-
--   :material-handshake:{ .lg .middle } **Training materials**
+-   :fontawesome-solid-computer:{ .lg .middle } **Training environment**
 
     ---
 
-    [:octicons-arrow-right-24: Training modules and teaching resources](instructor/materials.md)
+    [:octicons-arrow-right-24: Software and files required for workshop delivery](instructor/environment.md)
+
+-   :material-book:{ .lg .middle } **Training materials**
+
+    ---
+
+    [:octicons-arrow-right-24: Materials and teaching resources](instructor/materials.md)
 
 </div>
 
 <br>
 
-Suggestions for improving these materials are welcome and will help support future trainers. Please see the [contribution guidelines](../CONTRIBUTING.md).
+This resource was developed by the Sydney Informatics Hub, University of Sydney and Australian BioCommons, enabled by Australian BioCommons' [BioCLI Platforms Project](https://www.biocommons.org.au/biocli). Funding was provided by NCRIS via [Bioplatforms Australia](https://bioplatforms.com/).
+
+![](assets/usyd-bioc-logos.png)
