@@ -1,7 +1,7 @@
 # This CITATION.cff file was generated with cffinit.
 # Visit https://bit.ly/cffinit to generate yours today!
 
-cff-version: 1.2.0
+cff-version: 2.0.0
 title: Nextflow for the Life Sciences Training Materials
 message: >-
   If you use this software, please cite it using the
@@ -23,7 +23,6 @@ authors:
   - family-names: "Mori"
     given-names: "Giorgia"
     orcid: "0000-0003-3469-5632"
-
 
 repository-code: 'https://github.com/Sydney-Informatics-Hub/nf4ls-materials'
 url: 'https://github.com/Sydney-Informatics-Hub/nf4ls-materials'
