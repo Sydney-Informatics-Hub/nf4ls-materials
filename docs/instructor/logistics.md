@@ -59,4 +59,15 @@ When planning delivery, trainers should consider:
 -   the time needed for setup, troubleshooting, and hands-on support
 -   how questions and discussion will be managed during the session
 
-A shared collaborative space such as a Google Doc can be useful for collecting questions, troubleshooting issues, and sharing links and tips during the workshop. You can find a template [here](../assets/Discussion%20board%20-%20Nextflow%20for%20the%20life%20sciences%202025.docx).
+### Learner support 
+
+A collaborative space can be useful for collecting questions, troubleshooting issues, and sharing links and tips during the workshop. We have used both Slack channels and shared Google Docs to provide learners with this space in previous training events. See: 
+
+- [Shared document template](../assets/template-participant-discussion.docx)
+
+
+### Trainer support 
+
+A runsheet shared amongst trainers and facilitators can be useful for coordinating responsibilities, tracking timing across sessions, and ensuring a consistent experience for learners. It can include who is presenting each section, when breaks are scheduled, which facilitators are on hand for support, and any notes on pacing or anticipated troubleshooting points. See: 
+
+- [Runsheet template](../assets/template-trainer-runsheet.docx)
