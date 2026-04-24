@@ -1,10 +1,9 @@
-# Introduction
 
 These training materials includes ready-to-use lessons and guidance for delivering a workshop on building reproducible and scalable scientific workflows with Nextflow.
 
 Nextflow is a popular bioinformatics workflow orchestrator that supports portable, reproducible, and scalable analysis across different computational infrastructures. It enables the use of software containers, integration of tools written in different languages, and optimisation for varied data types and computing environments.
 
-The content of these pages is designed to help other Trainers re-run and adapt the [‘Nextflow for the life sciences’ workshop](https://sydney-informatics-hub.github.io/hello-nextflow-2025/) for their own learners. 
+The content of these pages is designed to help other Trainers re-run and adapt Sydney Informatics Hub's Nextflow for the life sciences’ workshop for their own learners. 
 
 It will help you to:
 
@@ -40,6 +39,13 @@ It will help you to:
 </div>
 
 <br>
+
+!!! note "Previous iterations of this workshop"
+
+    - [Hello Nextflow workshop 2024](https://sydney-informatics-hub.github.io/hello-nextflow/)
+    - [Hello Nextflow workshop at AMSI 2024](https://sydney-informatics-hub.github.io/hello-nextflow-amsi24/)
+    - [Nextflow for the Life Sciences 2025](https://sydney-informatics-hub.github.io/hello-nextflow-2025/) 
+
 
 ## Acknowledgement 
 
