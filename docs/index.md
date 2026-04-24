@@ -1,4 +1,6 @@
-This training material includes ready-to-use materials and guidance for delivering a workshop on building reproducible and scalable scientific workflows with **Nextflow**.
+# Introduction
+
+These training materials includes ready-to-use lessons and guidance for delivering a workshop on building reproducible and scalable scientific workflows with Nextflow.
 
 Nextflow is a popular bioinformatics workflow orchestrator that supports portable, reproducible, and scalable analysis across different computational infrastructures. It enables the use of software containers, integration of tools written in different languages, and optimisation for varied data types and computing environments.
 
@@ -38,6 +40,8 @@ It will help you to:
 </div>
 
 <br>
+
+## Acknowledgement 
 
 This resource was developed by the Sydney Informatics Hub, University of Sydney and Australian BioCommons, enabled by Australian BioCommons' [BioCLI Platforms Project](https://www.biocommons.org.au/biocli). Funding was provided by NCRIS via [Bioplatforms Australia](https://bioplatforms.com/).
 

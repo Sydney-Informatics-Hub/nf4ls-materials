@@ -8,7 +8,7 @@ Install instructions are suitable for systems that meet the following:
 
 - Ubuntu v24.04
 - 2 cores
-- 4 GB memory
+- 4 GiB memory
 
 Machines with more resources may be provisioned but we suggest 2 cores and 4 GB
 memory as the minimum specifications **per user**. As a guide, the 2 cores
