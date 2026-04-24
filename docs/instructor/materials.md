@@ -6,7 +6,7 @@ This page provides links to the teaching materials used to deliver the workshop,
 
     These pages document the instructor-facing view of the workshop. The participant-facing workshop materials can be viewed in the [workshop materials](../workshop/index.md) section.
 
-    To adapt and deploy the materials template for your own delivery, see the [deployment instructions]().
+    To adapt and deploy the materials template for your own delivery, see the [deployment instructions](https://github.com/Sydney-Informatics-Hub/nf4ls-materials#using-this-template).
 
 The workshop materials provide a hands-on introduction to Nextflow, with a focus on reproducible and scalable workflow development for bioinformatics. The workshop is structured in two parts, moving from foundational concepts to the practical development of a multi-sample workflow. 
 
