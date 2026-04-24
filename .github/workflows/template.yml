@@ -32,10 +32,8 @@ jobs:
       - name: Restructure for participant delivery
         if: steps.check.outputs.skip == 'false'
         run: |
-          rm -rf docs/ setup/ CONTRIBUTING.md CITATION.cff
-          mv workshop/ docs/
+          rm -rf docs/instructor/ setup/ CONTRIBUTING.md CITATION.cff
           sed -i '/# INSTRUCTOR_START/,/# INSTRUCTOR_END/d' mkdocs.yml
-          sed -i 's|: workshop/|: |g' mkdocs.yml
 
       - name: Commit and self-destruct
         if: steps.check.outputs.skip == 'false'
