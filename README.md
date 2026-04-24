@@ -1,10 +1,10 @@
 # nf4ls-materials
 
-A GitHub template repository for delivering the **Nextflow for the Life Sciences** workshop. When you create a new repository from this template, a GitHub Actions workflow automatically populates it with the full workshop content — with instructor notes removed and your organisation's details substituted in.
+A GitHub template repository for delivering the **Nextflow for the Life Sciences** workshop. When you create a new repository from this template, a GitHub Actions workflow automatically populates it with the full workshop content, with instructor notes removed and your organisation's details substituted in.
 
 ## Using this template
 
-1. Click **Use this template** on GitHub and create a new repository under your org/user.
+1. Click [**Use this template** on the GitHub repository](https://github.com/Sydney-Informatics-Hub/nf4ls-materials) and create a new repository under your org/username 
 2. The `template.yml` workflow fires automatically on the first push, running cookiecutter to:
    - Populate the repo with the workshop materials from this template
    - Replace repo name, site name, and GitHub username throughout
@@ -17,7 +17,6 @@ A GitHub template repository for delivering the **Nextflow for the Life Sciences
 - Full workshop content (Part 1 and Part 2) from the 2025 Nextflow for the Life Sciences workshop
 - MkDocs site with Material theme, auto-deployed to GitHub Pages on push to `main`
 - Setup scripts and sample data for the training environment
-- `AUTHORS`, `LICENSE`, `CODE_OF_CONDUCT.md`, `CONTRIBUTING.md`, `CITATION.cff`
 
 ## Enabling GitHub Pages in the generated repo
 
