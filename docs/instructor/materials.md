@@ -32,13 +32,13 @@ Below are lesson notes from trainers who have previously delivered this workshop
 
     ---
 
-    [:octicons-arrow-right-24: Part 1 - Nextflow fundamentals](instructor/pt1-guide.md)
+    [:octicons-arrow-right-24: Part 1 - Nextflow fundamentals](pt1-guide.md)
 
 -   :fontawesome-solid-hand:{ .lg .middle } **Part 2 - Build a workflow**
 
     ---
 
-    [:octicons-arrow-right-24: Part 2 - Building a workflow](instructor/pt2-guide.md)
+    [:octicons-arrow-right-24: Part 2 - Building a workflow](pt2-guide.md)
 
 </div>
 
