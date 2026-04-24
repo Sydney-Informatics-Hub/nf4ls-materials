@@ -65,7 +65,6 @@ A collaborative space can be useful for collecting questions, troubleshooting is
 
 - [Shared document template](../assets/template-participant-discussion.docx)
 
-
 ### Trainer support 
 
 A runsheet shared amongst trainers and facilitators can be useful for coordinating responsibilities, tracking timing across sessions, and ensuring a consistent experience for learners. It can include who is presenting each section, when breaks are scheduled, which facilitators are on hand for support, and any notes on pacing or anticipated troubleshooting points. See: 
