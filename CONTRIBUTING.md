@@ -24,8 +24,8 @@ Contributions do not need to be large to be valuable!
 
 ## How to contribute
 
-1. Open an issue to discuss your idea, or to report a problem.
-2. Fork the repository and create a branch for your changes.
+1. Open an issue to discuss your idea, or to report a problem
+2. Fork the repository and create a branch for your changes
 3. Submit a pull request describing:
    - What you changed
    - Why the change is helpful for trainers
@@ -36,14 +36,10 @@ We encourage submitting draft pull requests to discuss any issues as they come u
 
 All contributions will be reviewed by a maintainer from the Sydney Informatics Hub.
 
-We aim to provide constructive feedback and to respond in a timely
-manner, but review timelines may vary depending on availability.
+We aim to provide constructive feedback and to respond in a timely manner, but review timelines may vary depending on availability.
 
 ## Attribution and licensing
 
-By contributing, you agree that your contributions will be licensed
-under the **Creative Commons Attribution 4.0 International (CC BY 4.0)**
-licence, consistent with the rest of the repository.
+By contributing, you agree that your contributions will be licensed under the **Creative Commons Attribution 4.0 International (CC BY 4.0)** licence, consistent with the rest of the repository.
 
-Significant contributions may be acknowledged in the `AUTHORS` file.
-Minor contributions are recorded via the GitHub commit history.
+Significant contributions may be acknowledged in the `AUTHORS` file. Minor contributions are recorded via the GitHub commit history.
