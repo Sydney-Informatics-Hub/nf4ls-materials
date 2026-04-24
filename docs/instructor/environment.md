@@ -40,9 +40,9 @@ The training environment must have the following software installed and availabl
 -   All workshop container images pre-pulled to avoid pull delays during the session
 -   Workshop files and data staged in a shared or per-user directory
 
-## Example set up instructions 
+## Preconfigured set up 
 
-On your selected infrastructure, you can follow the [Setup instructions](https://github.com/Sydney-Informatics-Hub/hello-nextflow-2025/blob/main/dev_setup/README.md) to install and configure an environment with all software, containers, and files required for the workshop.
+You can follow the [Setup instructions](../../setup/README.md) to install and configure an environment with all software, containers, and files required for the workshop.
 
 ### Recommended pre-workshop checks
 
@@ -54,6 +54,4 @@ Before the workshop begins, trainers should verify:
 -   Workshop files are staged and readable by participants
 -   Shared learner support space (e.g. Slack, Google Doc) is set up and linked
 -   Any platform-specific quotas or access restrictions have been resolved
-
-_SIH and the Australian BioCommons are working towards providing access to a a pre-configured compute environments for self-directed learning, as well as setting up VMs._
 

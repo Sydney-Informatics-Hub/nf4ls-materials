@@ -27,10 +27,13 @@ A GitHub template repository for delivering the **Nextflow for the Life Sciences
 
 Your site will be published at `https://<github_account>.github.io/<repo_name>/`.
 
-## Licence
-
-CC BY 4.0 — you are free to share and adapt with attribution.
-
 ## Acknowledgements
 
-Materials developed by the [Sydney Informatics Hub](https://www.sydney.edu.au/research/facilities/sydney-informatics-hub.html) and [Seqera](https://seqera.io/), enabled by Australian BioCommons' BioCLI Platforms Project.
+Materials developed by the [Sydney Informatics Hub](https://www.sydney.edu.au/research/facilities/sydney-informatics-hub.html), enabled by Australian BioCommons' BioCLI Platforms Project.
+
+These materials have been developed by: 
+
+- Georgie Samaha, Sydney Informatics Hub, University of Sydney 
+- Fred Jaya, Sydney Informatics Hub, University of Sydney  
+- Michael Geaghan, Sydney Informatics Hub, University of Sydney 
+- Giorgia Mori, Australian BioCommons 
