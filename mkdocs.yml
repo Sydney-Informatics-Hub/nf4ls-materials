@@ -11,7 +11,7 @@ nav:
       - Training materials: instructor/materials.md
   # INSTRUCTOR_END
   - Example workshop materials:
-      - Home: docs/workshop/index.md
+      - Home: workshop/index.md
       - Part 1: 
         - 1.0 Why Nextflow?: workshop/part1/00_whynextflow.md
         - 1.1 Introduction: workshop/part1/01_intro.md
