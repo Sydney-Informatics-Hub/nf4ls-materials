@@ -24,12 +24,12 @@ nav:
         - 1.8 Dynamic naming: workshop/part1/08_dynamic.md
         - 1.9 Wrapping up: workshop/part1/09_outro.md
       - Part 2:
-        - 2.0 Introduction: docs/workshop/part2/00_intro.md
-        - 2.1 Our first process and container: docs/workshop/part2/01_salmon_idx.md
-        - 2.2 Samplesheets, operators, and groovy: docs/workshop/part2/02_fastqc.md
-        - 2.3 Multiple process inputs: docs/workshop/part2/03_quant.md
-        - 2.4 Combining channels, multiple process outputs: docs/workshop/part2/04_multiqc.md
-        - 2.5 Upscaling to multiple samples and introspection: docs/workshop/part2/05_scale.md
+        - 2.0 Introduction: workshop/part2/00_intro.md
+        - 2.1 Our first process and container: workshop/part2/01_salmon_idx.md
+        - 2.2 Samplesheets, operators, and groovy: workshop/part2/02_fastqc.md
+        - 2.3 Multiple process inputs: workshop/part2/03_quant.md
+        - 2.4 Combining channels, multiple process outputs: workshop/part2/04_multiqc.md
+        - 2.5 Upscaling to multiple samples and introspection: workshop/part2/05_scale.md
 theme:
   name: material
   logo: assets/usyd-logo.png
