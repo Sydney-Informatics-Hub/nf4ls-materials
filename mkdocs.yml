@@ -8,7 +8,10 @@ nav:
   - Instructor guides:
       - Training logistics: instructor/logistics.md
       - Training infrastructure: instructor/environment.md
-      - Training materials: instructor/materials.md
+      - Training materials: 
+        - Materials guide: instructor/materials.md
+        - Part 1: instructor/pt1-guide.md
+        - Part 2: instructor/pt2-guide.md
   # INSTRUCTOR_END
   - Example workshop materials: 
       - Home: workshop/index.md
