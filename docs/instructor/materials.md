@@ -1,13 +1,11 @@
-This page brings together the teaching materials used to deliver the workshop, along with guidance for trainers using or adapting them.
+This page provides links to the teaching materials used to deliver the workshop, along with guidance for trainers using or adapting them.
 
 ## Workshop materials
 
 The workshop materials provide a hands-on introduction to Nextflow, with a focus on reproducible and scalable workflow development for bioinformatics. The workshop is structured in two parts, moving from foundational concepts to the practical development of a multi-sample workflow.
 
-- [Workshop website](link)
-- [GitHub repository](link)
-- [Workshop material template](link)
-- [Workshop material template instructions](link)
+- [Workshop website]()
+- [GitHub repository]()
 
 The aim of the workshop is to introduce Nextflow best practices and focus on the concepts and features most useful for beginners. Because Nextflow has a broad feature set, the materials prioritise the knowledge learners need to begin using it confidently.
 
