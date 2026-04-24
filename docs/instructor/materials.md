@@ -26,7 +26,7 @@ When teaching, it may help to emphasise:
 
 Below are lesson notes from trainers who have previously delivered this workshop.
 
-<div class="grid cards" markdown>
+<div class="grid cards" style="grid-template-columns: repeat(2, 1fr);" markdown>
 
 -  :material-puzzle:{ .lg .middle } **Part 1 - Nextflow fundamentals**
 
@@ -34,7 +34,7 @@ Below are lesson notes from trainers who have previously delivered this workshop
 
     [:octicons-arrow-right-24: Part 1 - Nextflow fundamentals](instructor/pt1-guide.md)
 
--   :fa-hand:{ .lg .middle } **Part 2 - Build a workflow**
+-   :fontawesome-solid-hand:{ .lg .middle } **Part 2 - Build a workflow**
 
     ---
 
