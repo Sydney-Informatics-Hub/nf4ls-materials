@@ -1,81 +1,63 @@
-### Part 2 - Nextflow hands-on practice - multi-sample workflow development
+!!! tip "Part 2 goals and scope"
 
-=== "Part 2 goals and scope"
+    Part 2 replicates a "real-life" example of how a bioscientist would encounter and build a Nextflow pipeline for the first time. The key goals of Part 2 include:
 
-    Part 2 replicates a "real-life" example of how a bioscientist would encounter and code a Nextflow pipeline for the first time. The key goals of Part 2 include:
-
-    - Demonstrating how the foundational Nextflow concepts introduced in Part 1 is applied in a practical scenario
-    - Reiterate the key Nextflow concepts and components that are required for a simple bioinformatics workflow
+    - Demonstrating how the foundational Nextflow concepts introduced in Part 1 are applied in a practical scenario
+    - Reiterating the key Nextflow concepts and components required for a simple bioinformatics workflow
 
     What Part 2 is **not**:
 
-    - A guide on bioinformatics or data analyses, reviewing each input or output files and the inner workings of tools in detail
-    
-=== "Structured and repeated development across lessons"
+    - A guide on bioinformatics or data analysis — avoid reviewing the inner workings of tools or the biology of each input and output file in detail
+
+??? note "Structured and repeated development across lessons"
 
     Each lesson (2.1 - 2.5) will focus on converting a bash script into a modular Nextflow process. This is to emphasise that there is some boilerplate that will not change across tools, scripts, and analyses in Nextflow pipelines. However, these must be tweaked to fit based on what will be input and output.
 
-    For each lesson, you will guide learners to review:
+    For each lesson, you will guide learners to:
 
-    1. An existing bash script that conducts one bioinformatics data processing step
+    1. Review an existing bash script that conducts one bioinformatics data processing step
     2. Identify which components need to be implemented in a Nextflow process definition
-    3. Build that Nextflow process, step-by-step, following a similar order
+    3. Build that Nextflow process step-by-step, following a similar order to Part 1
 
-#### 2.0 Introduction
+## 2.0 Introduction
 
-This section provides the context for Part 2, such as the scenario of converting individual bash scripts into a simple, end-to-end Nextflow pipeline. 
+This section sets the context for Part 2: converting a set of individual bash scripts into a simple, end-to-end Nextflow pipeline for RNA-seq data preparation.
 
 You will introduce:
 
-- The files and data used for Part 2
-- The bioinformatics tool
-- Nextflow files that you will be changing
-- The high-level structure of the workflow that learners will have built by the end of the workshop.
+- The files and data used throughout Part 2
+- The bioinformatics tools being used
+- The Nextflow files that learners will be modifying
+- The high-level structure of the workflow that learners will have built by the end of the workshop
 
-#### 2.1 Our first process and container
+## 2.1 Our first process and container
 
-=== "Bash script to Nextflow process"
+This is the first occurrence of reviewing a bash script and converting it to a Nextflow process. Walk learners through the bash script before asking them to identify the components that map to Nextflow process blocks.
 
-    This is the first occurrence of reviewing a bash script and converting it to a Nextflow process. Recall that, when defining a process, there is some boilerplate code that is unlikely to change (`input:`, `output:`, `script:`), but the contents of each need to be tailored (based on the bash scripts). 
-    
-=== "Using containers in Nextflow"
+- Recall that there is boilerplate code unlikely to change across processes (`input:`, `output:`, `script:`), but the contents of each must be tailored to the tool being run
+- Learners do not need to understand the inner workings of containers — focus on why they are used, where to find them, and how to specify one in a process
 
-    There are many ways to manage software (e.g. modules, conda) and we consider using containers in Nextflow is the best practice. Containers package a tool together with its software environment so that everyone runs the same tool, same version, same dependencies, regardless of where the workflow is executed. As a Nextflow pipeline has many steps requiring different tools, using containers simplifies this and makes your pipeline reproducible.
+??? note "Why containers?"
 
-    There are many container platforms and repositories. For bioinformatics, particularly use in Nextflow, recommend learners to use Singularity (widely supported on HPC systems and suitable for shared environments) and BioContainers that are hosted on quay.io (plenty of pre-built containers for thousands of bioinformatics tools and supported by Nextflow, nf-core, Galaxy)
+    There are many ways to manage software (e.g. modules, conda) but using containers in Nextflow is best practice. Containers package a tool together with its software environment so that everyone runs the same tool, same version, and same dependencies, regardless of where the workflow is executed.
 
-    Learners do not need to understand the inner working of containers. The key things to communicate is knowing:
-    
-    - Why they are used
-    - Where bioinformatics containers can be searched and retrieved from
-    - How to implement a Nextflow process that uses a specific container
+    For bioinformatics, recommend learners use Singularity (widely supported on HPC systems) and BioContainers hosted on quay.io, which provides pre-built containers for thousands of tools and is supported by Nextflow, nf-core, and Galaxy.
 
-#### 2.2 Samplesheets, operators, and groovy
+## 2.2 Samplesheets, operators, and Groovy
 
-=== "Tuples: grouping related data"
+This lesson introduces structured inputs via a samplesheet and the use of operators to reshape channel data. Operators are often one of the hardest concepts for Nextflow beginners — focus on the **why**, not the mechanics.
 
-    Tuples are introduced to group related pieces of information together (e.g. sample name + file paths) and prevent accidental mixing of file and metadata. At this stage, **focus on the why, not the mechanics.** 
+- Emphasise that operators exist to transform input data into the exact structure required by the next process
+- Learners do not need to memorise operators — they need to understand that processes expect inputs in a specific format and operators are how you get data into that format
+- Use `.view()` frequently to show learners what channel contents look like before and after an operator is applied
+
+??? note "Tuples: grouping related data"
+
+    Tuples are introduced to group related pieces of information together (e.g. sample name + file paths) and prevent accidental mixing of files and metadata. At this stage, **focus on the why, not the mechanics.**
 
     More tuple usage will be visited in later lessons.
 
-=== "Reshaping data with operators"
-
-    Operators are often one of the hardest concepts for Nextflow beginners, but one of the most important for developing reproducible and scalable pipelines. They use Groovy syntax and it may not be obvious:
-
-    - Which operator to use
-    - When to use it
-    - Why the input shape needs to change
-
-    Emphasise the **why**: operators exist to transform input data into the exact structure required by the next process.
-
-    At this stage, learners do not need to memorise operators. they need to understand that:
-
-    - Processes expect inputs in the correct format
-    - Operators are the tool used to get data into those formats
-
-    This section demonstrates only one example. Later lessons will showcase different requirements where different operators need to be used.
-
-=== "Development and debugging best practices"
+??? note "Development and debugging best practices"
 
     Use this lesson to model real-world Nextflow development habits:
 
@@ -83,41 +65,38 @@ You will introduce:
     - Encourage regular use of `-resume` to avoid re-running completed steps
     - Normalise frequent and fast iteration when learners develop their own pipelines
 
-#### 2.3 Multiple process inputs
+## 2.3 Multiple process inputs
 
-=== "Accessing process outputs"
+This lesson applies the process-chaining concepts from Lesson 1.7 to a bioinformatics use case. Learners extend their workflow by defining a process that accepts multiple inputs and wiring it to upstream processes.
 
-    This lesson applies Lesson 1.7 to a bioinformatics use case. Recall that there are different valid ways to access outputs, such as:
+One key concept to clarify is when inputs should be grouped in a single tuple versus kept as separate inputs:
 
-    - Adding `.out` to the end of a process name only works for single-element channels
-    - For single-element channels, using `.out[0]` is identical to `.out`
-    - `emit` can be used to [name outputs](https://www.nextflow.io/docs/latest/process.html#naming-outputs)
+- Keep files, values, and metadata together in a tuple if they must travel together (e.g. sample ID + paired FASTQs)
+- Keep inputs separate if they are shared across samples or constant (e.g. a reference index used by all samples)
+- Grouping everything into a tuple introduces unnecessary data reshaping; splitting incorrectly can cause unexpected behaviour such as samples not running
 
-=== "When inputs should be grouped together vs. separated"
+??? note "Accessing process outputs"
 
-    In this lesson, learners extend their workflow by defining a process that accepts multiple inputs and chaining it to upstream processes. 
-    
-    One thing to clarify is when processes should have inputs all in a single tuple, or as separate inputs.
+    There are different valid ways to access process outputs:
 
-    Emphasise to keep files, values, and metadata together in a tuple if they must stay together (e.g. sample ID, paired FASTQs).
-    
-    Inputs should be seperate if they can be shared across samples, or are constant across samples. For example, the reference index `transcriptome.fa` can be used across different paired FASTQs.
+    - Adding `.out` to the end of a process name works for single-output channels
+    - For single-element channels, `.out[0]` is identical to `.out`
+    - `emit` can be used to [name outputs](https://www.nextflow.io/docs/latest/process.html#naming-outputs) and is preferred in more complex workflows
 
-    Grouping everything as a tuple introduces unecessary data processing steps, while splitting incorrectly can result in unexpected behaviour, such as not all samples running.
+## 2.4 Combining channels and multiple process outputs
 
-#### 2.4 Combining channels, multiple process outputs
+This lesson demonstrates how combining channels allows outputs from multiple processes to be collected and passed to a single downstream process.
 
-This lesson demonstrates how combining channels allows multiple process outputs to be collected and used by a single downstream process.
+MultiQC is the ideal example here: it requires outputs from all upstream tools to be aggregated before it can run.
 
-MultiQC is the ideal example to demonstrate this as it requires all bioinformatics tool outputs to be aggregated and run in a single output.
+- Note that the `input: path "*"` and `script: multiqc .` pattern follows the MultiQC Nextflow [integration recommendations](https://multiqc.info/docs/usage/pipelines/#nextflow)
+- State clearly that this permissive pattern is generally bad practice — it is used here because MultiQC requires it, not as a model to follow
+- Communicate that in most cases it is strongly preferred to be explicit about which files and folders a process receives, as this improves error handling, testing, and maintainability
 
-Note that the `input: path "*"` and `script: multiqc .` blocks follow the MultiQC Nextflow [integration recommendations](https://multiqc.info/docs/usage/pipelines/#nextflow). 
+## 2.5 Upscaling to multiple samples and introspection
 
-State that this permissive pattern is generally bad practice. Communicate to learners that it is highly preferred to be as explicit the exact files and folders required. This improves error handling, testing, and future maintainability.
+This final lesson demonstrates how a workflow built for a single sample scales to many samples without any changes to the pipeline code itself.
 
-#### 2.5 Upscaling to multiple samples and introspection
-
-This final lesson demonstrates how a workflow that works for a single sample can be scaled to many samples without modifying the pipeline code itself. Advise learners that scaling in Nextflow is primarily a configuration problem, not a coding problem. By updating the samplesheet, the same workflow logic is reused to run tasks in parallel across multiple samples.
-
-It is important to communicate that this section is **only an introduction to configuration, benchmarking, and scaling concepts**. Direct learners to the [Nextflow on HPC workshop](https://sydney-informatics-hub.github.io/nextflow-hpc-workshop/) which covers these topics in detail, and was developed as a sequel to this introductory workshop.
-
+- Advise learners that scaling in Nextflow is primarily a configuration problem, not a coding problem — by updating the samplesheet, the same workflow logic runs tasks in parallel across all samples
+- This section is **only an introduction** to configuration, benchmarking, and scaling concepts
+- Direct learners to the [Nextflow on HPC workshop](https://sydney-informatics-hub.github.io/nextflow-hpc-workshop/) for a full treatment of these topics, which was developed as a sequel to this introductory workshop

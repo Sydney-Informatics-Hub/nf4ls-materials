@@ -1,5 +1,3 @@
-# Part 1 - Nextflow foundations
-
 !!! tip "Part 1 goals and scope"
 
     Part 1 builds foundational Nextflow knowledge by guiding learners through the incremental development of a simple pipeline from scratch. The key goals of Part 1 include:
