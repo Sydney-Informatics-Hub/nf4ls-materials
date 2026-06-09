@@ -54,10 +54,17 @@ log "Pulling biocontainers"
 # [0]: Link to pull container
 # [1]: Amended name for nextflow to recognise
 IMAGES=(
-	"quay.io/biocontainers/salmon:1.10.1--h7e5ed60_0 quay.io-biocontainers-salmon-1.10.1--h7e5ed60_0.img"
-	"quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0 quay.io-biocontainers-fastqc-0.12.1--hdfd78af_0.img"
-	"quay.io/biocontainers/multiqc:1.19--pyhdfd78af_0 quay.io-biocontainers-multiqc-1.19--pyhdfd78af_0.img"
+	"quay.io/biocontainers/salmon:1.10.1--h7e5ed60_0 quay.io-biocontainers-salmon-1.10.1--h7e5ed60_0.img salmon:1.10.1--h7e5ed60_0"
+	"quay.io/biocontainers/fastqc:0.12.1--hdfd78af_0 quay.io-biocontainers-fastqc-0.12.1--hdfd78af_0.img fastqc:0.12.1--hdfd78af_0"
+	"quay.io/biocontainers/multiqc:1.19--pyhdfd78af_0 quay.io-biocontainers-multiqc-1.19--pyhdfd78af_0.img multiqc:1.19--pyhdfd78af_0"
 )
+
+CVMFS_ROOT="/cvmfs/singularity.galaxyproject.org/all"
+USE_CVMFS_SYMLINKS=false
+if command -v shelley-bio >/dev/null 2>&1 && [[ -d "${CVMFS_ROOT}" ]]; then
+	USE_CVMFS_SYMLINKS=true
+	log "bioshell detected - using CVMFS symlinks for containers"
+fi
 
 # Export cachedir in .bashrc 
 if grep -q "SINGULARITY_CACHEDIR" ~/.bashrc; then
@@ -77,11 +84,17 @@ mkdir -p ${SINGULARITY_CACHEDIR}
 # by adding "docker://" 
 for image in "${IMAGES[@]}"; do
 	# unpack string by " "
-	read -r url img <<< $image
-	if [[ ! -f "${SINGULARITY_CACHEDIR}/${img}" ]]; then
-		singularity pull "${SINGULARITY_CACHEDIR}/${img}" "docker://${url}"
-	else
+	read -r url img cvmfs_img <<< "$image"
+	cache_path="${SINGULARITY_CACHEDIR}/${img}"
+	cvmfs_path="${CVMFS_ROOT}/${cvmfs_img}"
+
+	if [[ -e "${cache_path}" || -L "${cache_path}" ]]; then
 		log "Skipping ${img} (already exists)"
+	elif [[ "${USE_CVMFS_SYMLINKS}" == true && -f "${cvmfs_path}" ]]; then
+		ln -s "${cvmfs_path}" "${cache_path}"
+		log "Linked ${img} -> ${cvmfs_path}"
+	else
+		singularity pull "${cache_path}" "docker://${url}"
 	fi
 done
 

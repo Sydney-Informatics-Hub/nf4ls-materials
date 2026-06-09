@@ -59,6 +59,13 @@ modularity:
 ./install.sh
 ```
 
+!!! info
+
+    On bioshell hosts (where `shelley-bio` is available and
+    `/cvmfs/singularity.galaxyproject.org/all` is mounted), the install script
+    creates symlinks to CVMFS container images instead of downloading them.
+    On all other hosts, the script downloads container images as usual.
+
 If prompted with the following, select **"install the package maintainer's 
 version"**
 
@@ -81,16 +88,24 @@ successful for this user. In this example, the default user is `ubuntu`.
 Once the install script has been run successfuly, there are a few more steps to
 prepare the machine to be workshop-ready.
 
+The installer copies the runtime Part 2 workshop files from
+`docs/workshop/part2/materials/` into the learner's home directory.
+
 After the test run, you should see the following files and folders:
 
 ```console
 ubuntu@ttt-fj-image-2:~$ tree -L 2 $HOME
 /home/ubuntu
-├── nf4ls-data
-│   ├── install.sh
-│   ├── lib
-│   ├── part2
-│   └── README.md
+├── nf4ls-materials
+│   ├── CITATION.cff
+│   ├── CODE_OF_CONDUCT.md
+│   ├── CONTRIBUTING.md
+│   ├── cookiecutter.json
+│   ├── docs
+│   ├── LICENSE
+│   ├── mkdocs.yml
+│   ├── README.md
+│   └── setup
 ├── part1
 ├── part2
 │   ├── bash_scripts
@@ -118,7 +133,7 @@ and the setup repository files are ready to be deleted:
 cd ${HOME} && \
 rm -fv ${HOME}/part2/*.html ${HOME}/part2/*.txt ${HOME}/part2/.nextflow.log* && \
 rm -rfv ${HOME}/part2/.nextflow ${HOME}/part2/results ${HOME}/part2/work && \
-rm -rfv ${HOME}/nf4ls-data
+rm -rfv ${HOME}/nf4ls-materials
 ```
 
 Lastly, ensure that the environmental variables (for example, `SINGULARITY_CACHEDIR`) is sourced correctly. This will be automatically be applied upon login.
@@ -132,9 +147,8 @@ source ${HOME}/.bashrc
 After successfuly installation, and cleaning up the machines, the final file
 structure should look as follows:
 
-```bash
+```consol
 tree ${HOME}
-```console
 /home/ubuntu
 ├── part1 # Empty
 ├── part2
@@ -171,7 +185,8 @@ The `part1` folder is left intentionally empty as the learners will create scrip
 
 **Part 2**
 
-The `part2` folder contains several files for the workshop:
+The installer copies the `docs/workshop/part2/materials/` folder into the
+learner's `part2/` directory. That folder contains several files for the workshop:
 
 - `bash_scripts/` includes example scripts of the pipeline that learners will
 be implementing in Nextflow. These are never run, but serve as an example of
