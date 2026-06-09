@@ -59,6 +59,13 @@ modularity:
 ./install.sh
 ```
 
+!!! info
+
+    On bioshell hosts (where `shelley-bio` is available and
+    `/cvmfs/singularity.galaxyproject.org/all` is mounted), the install script
+    creates symlinks to CVMFS container images instead of downloading them.
+    On all other hosts, the script downloads container images as usual.
+
 If prompted with the following, select **"install the package maintainer's 
 version"**
 
