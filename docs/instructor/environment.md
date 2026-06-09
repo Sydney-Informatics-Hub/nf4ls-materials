@@ -42,7 +42,7 @@ The training environment must have the following software installed and availabl
 
 ## Preconfigured set up 
 
-You can follow the [Setup instructions](../../setup/README.md) to install and configure an environment with all software, containers, and files required for the workshop.
+You can follow the [Setup instructions](https://github.com/Sydney-Informatics-Hub/nf4ls-materials/blob/main/setup/README.md) to install and configure an environment with all software, containers, and files required for the workshop.
 
 ### Recommended pre-workshop checks
 
