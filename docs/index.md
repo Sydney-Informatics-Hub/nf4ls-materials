@@ -49,6 +49,11 @@ It will help you to:
 
 ## Acknowledgement 
 
+!!! note "If you use or adapt these materials, please cite us"
+
+    *Samaha, G., Geaghan, M., Jaya, F., O'Brien, M.& Mori, G. (2026). Nextflow for the life sciences (NF4LS) Trainers materials. Zenodo. https://doi.org/10.5281/zenodo.21485710*
+
+
 This resource was developed by the Sydney Informatics Hub, University of Sydney and Australian BioCommons, enabled by Australian BioCommons' [BioCLI Platforms Project](https://www.biocommons.org.au/biocli). Funding was provided by NCRIS via [Bioplatforms Australia](https://bioplatforms.com/).
 
 ![](assets/usyd-bioc-logos.png)
